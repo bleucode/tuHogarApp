@@ -1,5 +1,9 @@
 html, body{
     background-color:white;
+    position: relative;
+    min-width:1024px;
+    min-height: 768px;
+    height: 100%;
 }
 
 p {
@@ -7,5 +11,6 @@ p {
 }
 
 h1{
-    color: #D6C99E;
+    color: #d8d3c1;
+    text-align: center;
 }

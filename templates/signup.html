@@ -2,29 +2,56 @@
 
 {% block main %} 
 
-<form action="/login" method="post" class="form-signin">
-   <img  src="/static/img/logo.jpg" alt="" width="100" height="57">
+<style>
+  .btn-primary,
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-primary:visited,
+  .btn-primary:focus{
+    background-color: #CD7034;
+  }
+  .a-color,
+  .a-color:hover,
+  .a-color:active,
+  .a-color:visited,
+  .a-color:focus{
+    color: #CD7034;
+  }
 
-   <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  .font-size{
+  font-size: 15px;
+  }
+  </style>
 
-   <div class="form-floating">
-     <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" required autofocus>
-     <label for="floatingInput">Username</label>
-   </div>
-   <div class="form-floating">
-     <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
-     <label for="floatingPassword">Password</label>
-   </div>
-   <div class="form-floating">
-      <input type="text" class="form-control" id="floatingPassword" placeholder="Favorite Color" name="favorite_color" required>
-      <label for="floatingPassword">Favorite Color</label>
-    </div>
 
-  
-   <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-   <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
-   <p>{{ message }}</p>
- </form>
+<form action="/signup" method="post" class="form-signin">
+  <img  align="center" src="/static/img/pix.png" alt="" width="300" height="100">
+
+  <h1 class="h3 mb-3 fw-normal"></h1>
+
+  <div class="form-floating">
+    <input type="email" class="form-control" id="floatingInput" placeholder="Email"  name="username" required autofocus>
+    <label for="emailAddress floatingInput">Email</label>
+  </div>
+  <p></p>
+  <div class="form-floating">
+    <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$" name="password" minlength="8" required>
+    <label for="userPassword floatingPassword">Contraseña</label>
+  </div>
+  </div>
+  <p></p>
+  <div class="form-floating">
+  <select class="form-select form-select-lg mb-2 font-size" aria-label=".form-select-lg example" name="favorite_color">
+    <option class="font-size">Usuario</option>
+    <option class="font-size">Profesional</option>
+  </select>
+  </div>
+  <p></p>
+  <button class="w-100 btn btn-lg btn-primary" type="submit">Registrese aqui</button>
+  <p></p>
+  <p> ¿Ya tiene cuenta? <a class="a-color" href="/login">Ingrese aqui</a> </p>
+ 
+</form>
 
 
 

@@ -1,4 +1,7 @@
 import sqlite3
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 def show_color(username):
     connection = sqlite3.connect('flask.db', check_same_thread = False)
@@ -56,3 +59,36 @@ def signup(username, password, favorite_color):
 
     return 'You have succesfully signed up!!!'
 
+def form(username, password, favorite_color, nombre, apellido, numContacto, dire, dirNum, postal, pais, ciudad):
+    connection = sqlite3.connect('flask.db', check_same_thread = False)
+    cursor = connection.cursor()
+    cursor.execute("""SELECT password FROM user WHERE username = '{username}';""".format(username = username))
+    exist = cursor.fetchone()
+
+    if exist:
+        cursor.execute("""UPDATE user SET username = '{username}' , password = '{password}', favorite_color = '{favorite_color}',  nombre = '{nombre}', apellido = '{apellido}', numContacto= '{numContacto}' , dire= '{dire}' ,dirNum= '{dirNum}' ,postal = '{postal}' , pais= '{pais}' ,ciudad= '{ciudad}' WHERE username = '{username}';""".format(username =username, password = password, favorite_color = favorite_color, nombre =nombre, apellido = apellido, numContacto = numContacto, dire = dire , dirNum = dirNum, postal = postal,  pais = pais, ciudad = ciudad))
+        connection.commit()
+        cursor.close()
+        connection.close() 
+
+    else:
+        return ('aaaaa')
+
+    return 'Changes made!!!'
+
+def form1(username, experiencia, detalles):
+    connection = sqlite3.connect('flask.db', check_same_thread = False)
+    cursor = connection.cursor()
+    cursor.execute("""SELECT password FROM user WHERE username = '{username}';""".format(username = username))
+    exist = cursor.fetchone()
+
+    if exist:
+        cursor.execute("""UPDATE user SET experiencia= '{experiencia}', detalles= '{detalles}' WHERE username = '{username}';""".format(username= username, experiencia = experiencia, detalles = detalles))
+        connection.commit()
+        cursor.close()
+        connection.close() 
+
+    else:
+        return ('aaaaa')
+
+    return 'Changes made!!!'
