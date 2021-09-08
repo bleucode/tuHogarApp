@@ -92,3 +92,20 @@ def form1(username, experiencia, detalles):
         return ('aaaaa')
 
     return 'Changes made!!!'
+
+def passw(username, password):
+    connection = sqlite3.connect('flask.db', check_same_thread = False)
+    cursor = connection.cursor()
+    cursor.execute("""SELECT username FROM user WHERE username = '{username}';""".format(username = username))
+    exist = cursor.fetchone()
+
+    if exist:
+        cursor.execute("""UPDATE user SET password= '{password}' WHERE username = '{username}';""".format(username= username, password = password))
+        connection.commit()
+        cursor.close()
+        connection.close() 
+
+    else:
+        return ('aaaaa')
+
+    return 'Changes made!!!'
